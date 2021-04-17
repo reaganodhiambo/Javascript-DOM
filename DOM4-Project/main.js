@@ -13,25 +13,31 @@ filter.addEventListener('keyup', filterItems);
 
 function addItem(e) {
     e.preventDefault();
-    
+
     // get input value
     let newItem = document.getElementById('input').value;
-    // create an li element
-    var li = document.createElement('li')
-    // Add class name
-    li.className = 'list-group-item'
-    // Add textNode with input value
-    li.appendChild(document.createTextNode(newItem))
+    // the trim method prevent adding of blanks and whitespace
+    if (newItem.trim() === "" ) {
+        alert("Can't add an empty note")
+        return false
+    } else {
+        // create an li element
+        var li = document.createElement('li')
+        // Add class name
+        li.className = 'list-group-item'
+        // Add textNode with input value
+        li.appendChild(document.createTextNode(newItem))
 
-    // create deleteButton element
+        // create deleteButton element
 
-    let deleteButton = document.createElement('button');
-    deleteButton.className = 'btn btn-danger btn-sm float-end delete'
-    deleteButton.appendChild(document.createTextNode('Delete'))
-    // append button to li
-    li.appendChild(deleteButton)
-    // append li to list
-    itemList.appendChild(li)
+        let deleteButton = document.createElement('button');
+        deleteButton.className = 'btn btn-danger btn-sm float-end delete'
+        deleteButton.appendChild(document.createTextNode('Delete'))
+        // append button to li
+        li.appendChild(deleteButton)
+        // append li to list
+        itemList.appendChild(li)
+    }
 }
 
 
@@ -56,8 +62,7 @@ function filterItems(e) {
         var itemName = item.firstChild.textContent;
         if (itemName.toLowerCase().indexOf(text) != -1) {
             item.style.display = 'block'
-        }
-        else {
+        } else {
             item.style.display = 'none'
         }
     })
