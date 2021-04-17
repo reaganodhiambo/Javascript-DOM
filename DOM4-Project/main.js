@@ -17,9 +17,10 @@ function addItem(e) {
     // get input value
     let newItem = document.getElementById('input').value;
     // the trim method prevent adding of blanks and whitespace
-    if (newItem.trim() === "" ) {
+    if (newItem.trim() === "") {
         alert("Can't add an empty note")
-        return false
+        return document.getElementById("input").value = "";
+        
     } else {
         // create an li element
         var li = document.createElement('li')
