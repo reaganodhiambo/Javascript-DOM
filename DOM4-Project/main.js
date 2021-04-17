@@ -45,9 +45,13 @@ function removeItem(e) {
     }
 }
 
+// Search through notes
 function filterItems(e) {
+    // convert text from input to lowercase and assign it to text
     var text = e.target.value.toLowerCase();
+    // grab notes from Notelist
     let items = itemList.getElementsByTagName('li');
+    // create an array from the Notelist
     Array.from(items).forEach(function (item) {
         var itemName = item.firstChild.textContent;
         if (itemName.toLowerCase().indexOf(text) != -1) {
